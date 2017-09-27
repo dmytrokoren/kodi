@@ -626,6 +626,12 @@ void CDarwinUtils::EnableOSScreenSaver(bool enable)
 #endif
 }
 
+bool CDarwinUtils::IsAppleTV4_4K()
+{
+  bool isATV4k = getIosPlatform() == AppleTV4K;
+  return isATV4k;
+}
+
 bool CDarwinUtils::ResetSystemIdleTimer()
 {
 #if defined(TARGET_DARWIN_TVOS)
