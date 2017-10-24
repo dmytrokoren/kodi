@@ -245,6 +245,7 @@ typedef struct SelectionStream
   int          height = 0;
   CRect        SrcRect;
   CRect        DestRect;
+  CRect        ViewRect;
   std::string  stereo_mode;
   float        aspect_ratio = 0.0f;
 } SelectionStream;

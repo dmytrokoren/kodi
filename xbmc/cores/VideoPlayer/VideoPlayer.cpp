@@ -3334,8 +3334,7 @@ void CVideoPlayer::UpdateStreamInfos()
     SelectionStream& s = m_SelectionStreams.Get(STREAM_VIDEO, streamId);
     s.bitrate = m_VideoPlayerVideo->GetVideoBitrate();
     s.aspect_ratio = m_renderManager.GetAspectRatio();
-    CRect viewRect;
-    m_renderManager.GetVideoRect(s.SrcRect, s.DestRect, viewRect);
+    m_renderManager.GetVideoRect(s.SrcRect, s.DestRect, s.ViewRect);
     CDemuxStream* stream = m_pDemuxer->GetStream(m_CurrentVideo.demuxerId, m_CurrentVideo.id);
     if (stream && stream->type == STREAM_VIDEO)
     {
@@ -4734,6 +4733,7 @@ void CVideoPlayer::GetVideoStreamInfo(int streamId, SPlayerVideoStreamInfo &info
   info.height = s.height;
   info.SrcRect = s.SrcRect;
   info.DestRect = s.DestRect;
+  info.ViewRect = s.ViewRect;
   info.videoCodecName = s.codec;
   info.videoAspectRatio = s.aspect_ratio;
   info.stereoMode = s.stereo_mode;

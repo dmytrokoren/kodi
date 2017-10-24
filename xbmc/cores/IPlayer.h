@@ -122,6 +122,7 @@ struct SPlayerVideoStreamInfo
   std::string videoCodecName;
   CRect SrcRect;
   CRect DestRect;
+  CRect ViewRect;
   std::string stereoMode;
 
   SPlayerVideoStreamInfo()
