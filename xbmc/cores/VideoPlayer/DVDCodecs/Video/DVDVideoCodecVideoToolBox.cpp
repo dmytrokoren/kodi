@@ -288,7 +288,6 @@ bool CDVDVideoCodecVideoToolBox::Open(CDVDStreamInfo &hints, CDVDCodecOptions &o
     // don't grow past 16
     m_max_ref_frames = m_max_ref_frames > 16 ? 16 : m_max_ref_frames;
     
-    m_processInfo.SetVideoDeintMethod("none");
     std::list<EINTERLACEMETHOD> deintMethods;
     deintMethods.push_back(EINTERLACEMETHOD::VS_INTERLACEMETHOD_NONE);
     m_processInfo.UpdateDeinterlacingMethods(deintMethods);
