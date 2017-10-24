@@ -18,8 +18,7 @@
  *  <http://www.gnu.org/licenses/>.
  *
  */
-#define HAVE_VIDEOTOOLBOXDECODER
-#if defined(HAVE_VIDEOTOOLBOXDECODER)
+
 #include <atomic>
 #include <queue>
 
@@ -31,17 +30,14 @@
 #include <VideoToolBox/VideoToolBox.h>
 
 class DllVideoToolBox;
-class CBitstreamParser;
 class CBitstreamConverter;
 struct VTDumpDecompressionPropCtx;
 
 // tracks a frame in and output queue in display order
 typedef struct frame_queue {
-  double              dts;
   double              pts;
   size_t              width;
   size_t              height;
-  int64_t             sort_time;
   FourCharCode        pixel_buffer_format;
   CVPixelBufferRef    pixel_buffer_ref;
   struct frame_queue  *nextframe;
@@ -52,7 +48,7 @@ class CDVDVideoCodecVideoToolBox : public CDVDVideoCodec
 public:
   CDVDVideoCodecVideoToolBox(CProcessInfo &processInfo);
   virtual ~CDVDVideoCodecVideoToolBox();
-  
+
   // Required overrides
   virtual bool Open(CDVDStreamInfo &hints, CDVDCodecOptions &options);
   virtual void Dispose(void);
@@ -66,36 +62,43 @@ public:
   virtual unsigned GetAllowedReferences();
   virtual void SetCodecControl(int flags);
   virtual void Reopen();
-  
+
 protected:
-  void DisplayQueuePop(void);
-  void CreateVTSession(int width, int height, CMFormatDescriptionRef fmt_desc);
-  void DestroyVTSession(void);
+  void DisplayQueuePop();
+  bool CreateParameterSetArraysFromExtraData();
+  bool CreateFormatDescriptorFromParameterSetArrays();
+  bool ValidateVTSessionParameterSetsForRestart(uint8_t *pData, int iSize);
+	bool ResetVTSession(size_t count, size_t *sizes, uint8_t *types, uint8_t **pointers);
+  bool CreateVTSessionAndInitPictureFrame();
+  void DestroyVTSession();
   static void VTDecoderCallback(
-                                void *refcon, void *frameInfo,
-                                OSStatus status, UInt32 infoFlags, CVBufferRef imageBuffer, CMTime pts, CMTime duration);
-  
-  CDVDStreamInfo     m_hintsForReopen;
-  CDVDCodecOptions   m_optionsForReopen;
-  void              *m_vt_session;    // opaque videotoolbox session
-  CBitstreamConverter    *m_bitstream;
-  CMFormatDescriptionRef  m_fmt_desc;
-  
-  const char        *m_pFormatName;
+    void *refcon, void *frameInfo,
+    OSStatus status, UInt32 infoFlags, CVBufferRef imageBuffer, CMTime pts, CMTime duration);
+
+  CDVDStreamInfo     m_hints;
+  CDVDCodecOptions   m_options;
+  void              *m_vt_session = nullptr;    // opaque videotoolbox session
+  CBitstreamConverter *m_bitstream = nullptr;
+
+  CMFormatDescriptionRef m_fmt_desc = nullptr;
+
+  const char       *m_pFormatName;
   bool              m_DropPictures;
   int               m_codecControlFlags;
   DVDVideoPicture   m_videobuffer;
-  
-  double            m_sort_time;
+
   pthread_mutex_t   m_queue_mutex;    // mutex protecting queue manipulation
-  frame_queue       *m_display_queue; // display-order queue - next display frame is always at the queue head
+  frame_queue      *m_display_queue;  // display-order queue - next display frame is always at the queue head
   std::atomic<int>  m_queue_depth;    // we will try to keep the queue depth at m_max_ref_frames
   int32_t           m_max_ref_frames;
   bool              m_started;
   int               m_lastKeyframe;
   bool              m_sessionRestart;
-  double            m_sessionRestartDTS;
   double            m_sessionRestartPTS;
+  size_t            m_parameterSetCount = 0;
+  size_t           *m_parameterSetSizes = nullptr;
+  uint8_t          *m_parameterSetTypes = nullptr;
+  uint8_t          *m_SavedParameterSets = nullptr;
+  uint8_t         **m_parameterSetPointers = nullptr;
   bool              m_enable_temporal_processing;
 };
-#endif
