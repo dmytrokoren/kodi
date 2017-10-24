@@ -323,6 +323,13 @@
           <default>true</default>
           <control type="toggle" />
         </setting>
+        <setting id="videoplayer.usevideotoolbox_hevc_hrd" type="boolean" parent="videoplayer.usevideotoolbox" label="13460" help="36628">
+          <default>true</default>
+          <dependencies>
+            <dependency type="visible" setting="videoplayer.usevtb">true</dependency>
+          </dependencies>
+          <control type="toggle" />
+        </setting>
       </group>
       <group id="4" label="14232">
         <setting id="videoplayer.stereoscopicplaybackmode" type="integer" label="36520" help="36537">

@@ -180,6 +180,7 @@ const std::string CSettings::SETTING_VIDEOPLAYER_USEDXVA2 = "videoplayer.usedxva
 const std::string CSettings::SETTING_VIDEOPLAYER_USEOMXPLAYER = "videoplayer.useomxplayer";
 const std::string CSettings::SETTING_VIDEOPLAYER_USEOMX = "videoplayer.useomx";
 const std::string CSettings::SETTING_VIDEOPLAYER_USEVTB = "videoplayer.usevtb";
+const std::string CSettings::SETTING_VIDEOPLAYER_USEVIDEOTOOLBOX_HEVC_HDR = "videoplayer.usevideotoolbox_hevc_hrd";
 const std::string CSettings::SETTING_VIDEOPLAYER_USEMMAL = "videoplayer.usemmal";
 const std::string CSettings::SETTING_VIDEOPLAYER_USESTAGEFRIGHT = "videoplayer.usestagefright";
 const std::string CSettings::SETTING_VIDEOPLAYER_LIMITGUIUPDATE = "videoplayer.limitguiupdate";

@@ -6760,7 +6760,13 @@ msgctxt "#13459"
 msgid "Use OMXPlayer for decoding of video files."
 msgstr ""
 
-#empty strings from id 13460 to 13504
+#: system/settings/settings.xml
+msgctxt "#13460"
+msgid "Allow HEVC HDR content"
+msgstr ""
+
+
+#empty strings from id 13461 to 13504
 
 #: system/settings/settings.xml
 msgctxt "#13505"
@@ -19155,7 +19161,12 @@ msgctxt "#36627"
 msgid "Client"
 msgstr ""
 
-#empty strings from id 36628 to 36899
+#: system/settings/settings.xml
+msgctxt "#36628"
+msgid "Use VideoToolBox for HEVC/HDR content but AVFoundation is preferred to get correct color mapping"
+msgstr ""
+
+#empty strings from id 36629 to 36899
 
 #: xbmc/media/MediaType.cpp
 msgctxt "#36900"
