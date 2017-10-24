@@ -102,6 +102,7 @@ public:
   }
 
   virtual std::string GetStreamName();
+  virtual void CheckForInterlaced(const AVCodecParserContext *parser);
 
   int uniqueId;          // unique stream id
   int dvdNavId;
@@ -157,6 +158,7 @@ public:
     type = STREAM_VIDEO;
     iOrientation = 0;
     iBitsPerPixel = 0;
+    bMaybeInterlaced = false;
   }
 
   virtual ~CDemuxStreamVideo() {}
@@ -171,6 +173,7 @@ public:
   int iOrientation; // orientation of the video in degress counter clockwise
   int iBitsPerPixel;
   std::string stereo_mode; // expected stereo mode
+  bool bMaybeInterlaced; // stream 'might' be interlaced, on some, we can't tell for sure unless decoding.
 };
 
 class CDemuxStreamAudio : public CDemuxStream

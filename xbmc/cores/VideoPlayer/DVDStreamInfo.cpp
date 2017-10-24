@@ -65,6 +65,7 @@ void CDVDStreamInfo::Clear()
   forced_aspect = false;
   bitsperpixel = 0;
   stereo_mode.clear();
+  maybe_interlaced = false;
 
   channels   = 0;
   samplerate = 0;
@@ -107,6 +108,7 @@ bool CDVDStreamInfo::Equal(const CDVDStreamInfo& right, bool withextradata)
   ||  forced_aspect != right.forced_aspect
   ||  bitsperpixel != right.bitsperpixel
   ||  vfr      != right.vfr
+  ||  maybe_interlaced != right.maybe_interlaced
   ||  stereo_mode != right.stereo_mode ) return false;
 
   // AUDIO
@@ -233,6 +235,7 @@ void CDVDStreamInfo::Assign(const CDemuxStream& right, bool withextradata)
     orientation = stream->iOrientation;
     bitsperpixel = stream->iBitsPerPixel;
     stereo_mode = stream->stereo_mode;
+    maybe_interlaced = stream->bMaybeInterlaced;
   }
   else if(  right.type == STREAM_SUBTITLE )
   {

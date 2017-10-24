@@ -73,6 +73,7 @@ public:
   int orientation; // orientation of the video in degress counter clockwise
   int bitsperpixel;
   std::string stereo_mode; // stereoscopic 3d mode
+  bool maybe_interlaced;   // stream 'might' be interlaced, on some, we can't tell for sure unless decoding.
 
   // AUDIO
   int channels;

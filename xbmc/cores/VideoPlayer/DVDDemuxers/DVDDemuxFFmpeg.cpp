@@ -1396,6 +1396,7 @@ CDemuxStream* CDVDDemuxFFmpeg::AddStream(int streamIdx)
         st->fAspect = SelectAspect(pStream, st->bForcedAspect) * pStream->codec->width / pStream->codec->height;
         st->iOrientation = 0;
         st->iBitsPerPixel = pStream->codec->bits_per_coded_sample;
+        st->CheckForInterlaced(pStream->parser);
 
         AVDictionaryEntry *rtag = av_dict_get(pStream->metadata, "rotate", NULL, 0);
         if (rtag) 
@@ -1892,6 +1893,10 @@ void CDVDDemuxFFmpeg::ParsePacket(AVPacket *pkt)
       {
         st->codec->extradata_size = 0;
       }
+      // check for interlaced content, the check in AddStream might
+      // be skipped if parser is null, we do it in both places
+      if (stream)
+        stream->CheckForInterlaced(st->parser);
     }
   }
 
