@@ -51,6 +51,7 @@ class CDVDMediaCodecInfo;
 class CDVDVideoCodecIMXBuffer;
 class CMMALBuffer;
 class CDVDAmlogicInfo;
+class CDVDClock;
 
 
 // should be entirely filled by all codecs
@@ -312,6 +313,11 @@ public:
    */
   virtual void Reopen() {};
 
+  /**
+   * Some decoders (bypass) need access to the player clock for a/v sync
+   */
+  virtual void SetClock(CDVDClock *clock) {} ;
+  
 protected:
   CProcessInfo &m_processInfo;
 };

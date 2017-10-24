@@ -192,6 +192,7 @@ void CVideoPlayerVideo::OpenStream(CDVDStreamInfo &hint, CDVDVideoCodec* codec)
     delete m_pVideoCodec;
   }
   m_pVideoCodec = codec;
+  m_pVideoCodec->SetClock(m_pClock);
   m_hints   = hint;
   m_stalled = m_messageQueue.GetPacketCount(CDVDMsg::DEMUXER_PACKET) == 0;
   m_rewindStalled = false;
