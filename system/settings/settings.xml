@@ -323,11 +323,17 @@
           <default>true</default>
           <control type="toggle" />
         </setting>
-        <setting id="videoplayer.usevideotoolbox_hevc_hrd" type="boolean" parent="videoplayer.usevideotoolbox" label="13460" help="36628">
-          <default>true</default>
+        <setting id="videoplayer.usevideotoolbox_hevc_hrd" type="boolean" parent="videoplayer.usevtb" label="13460" help="36628">
+          <default>false</default>
           <dependencies>
             <dependency type="visible" setting="videoplayer.usevtb">true</dependency>
           </dependencies>
+          <control type="toggle" />
+        </setting>
+        <setting id="videoplayer.useavf" type="boolean" label="13453" help="13454">
+          <requirement>hasAVF</requirement>
+          <level>2</level>
+          <default>false</default>
           <control type="toggle" />
         </setting>
       </group>

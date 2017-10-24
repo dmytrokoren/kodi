@@ -940,6 +940,8 @@
 		DF56EF201A798A3F00CAAEFB /* HTTPFileHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF56EF1D1A798A3F00CAAEFB /* HTTPFileHandler.cpp */; };
 		DF56EF241A798A5E00CAAEFB /* HttpRangeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF56EF221A798A5E00CAAEFB /* HttpRangeUtils.cpp */; };
 		DF56EF251A798A5E00CAAEFB /* HttpRangeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF56EF221A798A5E00CAAEFB /* HttpRangeUtils.cpp */; };
+		DF5D451D1F9FA93D00617EDD /* DVDVideoCodecAVFoundation.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF5D451A1F9FA93100617EDD /* DVDVideoCodecAVFoundation.mm */; };
+		DF5D45211F9FA95600617EDD /* VideoLayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF5D451F1F9FA95300617EDD /* VideoLayerView.mm */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		DF5DB84D1C9D7D7100493CD2 /* ContextMenus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ABFE79F1C972D60002F1318 /* ContextMenus.cpp */; };
 		DF5DB84E1C9D7DA200493CD2 /* EventScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68AE5BF11C92431300C4D527 /* EventScanner.cpp */; };
 		DF5DB84F1C9D7DBA00493CD2 /* ContextMenus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA7E3E61C972CF4000B7863 /* ContextMenus.cpp */; };
@@ -5029,6 +5031,10 @@
 		DF56EF1E1A798A3F00CAAEFB /* HTTPFileHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPFileHandler.h; sourceTree = "<group>"; };
 		DF56EF221A798A5E00CAAEFB /* HttpRangeUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpRangeUtils.cpp; sourceTree = "<group>"; };
 		DF56EF231A798A5E00CAAEFB /* HttpRangeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRangeUtils.h; sourceTree = "<group>"; };
+		DF5D451A1F9FA93100617EDD /* DVDVideoCodecAVFoundation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DVDVideoCodecAVFoundation.mm; sourceTree = "<group>"; };
+		DF5D451B1F9FA93100617EDD /* DVDVideoCodecAVFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDVideoCodecAVFoundation.h; sourceTree = "<group>"; };
+		DF5D451E1F9FA95300617EDD /* VideoLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoLayerView.h; sourceTree = "<group>"; };
+		DF5D451F1F9FA95300617EDD /* VideoLayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoLayerView.mm; sourceTree = "<group>"; };
 		DF5E69981B28121E009A88C3 /* PVRTimerType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PVRTimerType.cpp; sourceTree = "<group>"; };
 		DF5E69991B28121E009A88C3 /* PVRTimerType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PVRTimerType.h; sourceTree = "<group>"; };
 		DF5EEEFB17CE977A003DEC49 /* AERingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERingBuffer.h; sourceTree = "<group>"; };
@@ -9033,6 +9039,8 @@
 		DFE4BE031C661C5F0048EB03 /* ios-common */ = {
 			isa = PBXGroup;
 			children = (
+				DF5D451E1F9FA95300617EDD /* VideoLayerView.h */,
+				DF5D451F1F9FA95300617EDD /* VideoLayerView.mm */,
 				DFE4BE041C661C5F0048EB03 /* AnnounceReceiver.h */,
 				DFE4BE051C661C5F0048EB03 /* AnnounceReceiver.mm */,
 			);
@@ -9460,6 +9468,8 @@
 		E38E153A0D25F9F900618676 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				DF5D451B1F9FA93100617EDD /* DVDVideoCodecAVFoundation.h */,
+				DF5D451A1F9FA93100617EDD /* DVDVideoCodecAVFoundation.mm */,
 				DFFAA2BF1DE5FEDB005E9A0F /* DVDVideoCodecVideoToolBox.cpp */,
 				DFFAA2C01DE5FEDB005E9A0F /* DVDVideoCodecVideoToolBox.h */,
 				DFBD336A1BD531CB001A8FEE /* DllVideoToolBox.h */,
@@ -13436,6 +13446,7 @@
 				DFC67E811C1C642800360EDE /* PltMediaItem.cpp in Sources */,
 				DFC67E821C1C642800360EDE /* PltMediaServer.cpp in Sources */,
 				DFC67E831C1C642800360EDE /* PltSyncMediaBrowser.cpp in Sources */,
+				DF5D451D1F9FA93D00617EDD /* DVDVideoCodecAVFoundation.mm in Sources */,
 				DFC67E841C1C642800360EDE /* Neptune.cpp in Sources */,
 				DFC67E851C1C642800360EDE /* NptAutomaticCleaner.cpp in Sources */,
 				DFC67E861C1C642800360EDE /* NptBase64.cpp in Sources */,
@@ -13482,6 +13493,7 @@
 				DFC67EB01C1C642800360EDE /* NptPosixQueue.cpp in Sources */,
 				DFC67EB11C1C642800360EDE /* NptPosixSystem.cpp in Sources */,
 				DFC67EB21C1C642800360EDE /* NptPosixThreads.cpp in Sources */,
+				DF5D45211F9FA95600617EDD /* VideoLayerView.mm in Sources */,
 				DFC67EB31C1C642800360EDE /* NptPosixTime.cpp in Sources */,
 				DFC67EB41C1C642800360EDE /* NptSelectableMessageQueue.cpp in Sources */,
 				DFC67EB51C1C642800360EDE /* NptBsdNetwork.cpp in Sources */,

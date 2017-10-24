@@ -44,6 +44,7 @@
 
 #if defined(TARGET_DARWIN_TVOS)
 #include "Video/DVDVideoCodecVideoToolBox.h"
+#include "Video/DVDVideoCodecAVFoundation.h"
 #endif
 #include "Audio/DVDAudioCodecFFmpeg.h"
 #include "Audio/DVDAudioCodecPassthrough.h"
@@ -155,6 +156,10 @@ CDVDVideoCodec* CDVDFactoryCodec::CreateVideoCodec(CDVDStreamInfo &hint, CProces
     pCodec = OpenCodec(new CMMALVideo(processInfo), hint, options);
 #elif defined(TARGET_DARWIN_TVOS)
     pCodec = OpenCodec(new CDVDVideoCodecVideoToolBox(processInfo), hint, options);
+    if (!pCodec)
+    {
+      pCodec = OpenCodec(new CDVDVideoCodecAVFoundation(processInfo), hint, options);
+    }
 #endif
     if (pCodec)
       return pCodec;

@@ -326,6 +326,9 @@ void CSettingConditions::Initialize()
 #endif
 #ifdef TARGET_DARWIN
   m_simpleConditions.insert("HasVTB");
+#ifdef TARGET_DARWIN_IOS
+  m_simpleConditions.insert("hasAVF");
+#endif
 #endif
 #ifdef HAS_LIBAMCODEC
   if (aml_present())
