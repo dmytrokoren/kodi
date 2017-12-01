@@ -414,7 +414,7 @@ void CWinSystemIOS::AnnounceOnLostDevice()
   // tell any shared resources
   CLog::Log(LOGDEBUG, "CWinSystemIOS::AnnounceOnLostDevice");
   for (std::vector<IDispResource *>::iterator i = m_resources.begin(); i != m_resources.end(); i++)
-    (*i)->OnLostDevice();
+    (*i)->OnLostDisplay();
 }
 
 void CWinSystemIOS::AnnounceOnResetDevice()
@@ -423,7 +423,7 @@ void CWinSystemIOS::AnnounceOnResetDevice()
   // tell any shared resources
   CLog::Log(LOGDEBUG, "CWinSystemIOS::AnnounceOnResetDevice");
   for (std::vector<IDispResource *>::iterator i = m_resources.begin(); i != m_resources.end(); i++)
-    (*i)->OnResetDevice();
+    (*i)->OnResetDisplay();
 }
 
 void CWinSystemIOS::StartLostDeviceTimer()

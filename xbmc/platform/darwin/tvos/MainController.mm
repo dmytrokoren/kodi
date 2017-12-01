@@ -50,9 +50,6 @@
 
 #import <MediaPlayer/MPMediaItem.h>
 #import <MediaPlayer/MPNowPlayingInfoCenter.h>
-#import <AVFoundation/AVDisplayCriteria.h>
-#import <AVKit/AVDisplayManager.h>
-#import <AVKit/UIWindow.h>
 
 #if __TVOS_11_2
   #import <AVFoundation/AVDisplayCriteria.h>
@@ -1511,7 +1508,7 @@ MainController *g_xbmcController;
       {
         // track and log changes
         oldDisplayRate = self.displayRate;
-        CLog::Log(LOGDEBUG, "%s: displayRate = %f", __PRETTY_FUNCTION__, self.displayRate);
+        //CLog::Log(LOGDEBUG, "%s: displayRate = %f", __PRETTY_FUNCTION__, self.displayRate);
       }
     }
   }

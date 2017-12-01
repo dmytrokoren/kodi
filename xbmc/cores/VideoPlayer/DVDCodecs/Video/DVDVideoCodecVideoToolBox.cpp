@@ -28,10 +28,6 @@
 #include "utils/BitstreamConverter.h"
 #include "utils/log.h"
 
-#define BOOL XBMC_BOOL
-#include "hevc.h"
-#undef BOOL
-
 extern "C" {
 #include "libavformat/avformat.h"
 }

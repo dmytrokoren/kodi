@@ -83,7 +83,6 @@ public:
             void AnnounceOnResetDevice();
             void StartLostDeviceTimer();
             void StopLostDeviceTimer();
-            void OnAppFocusChange(bool focus);
   
   bool InitDisplayLink(CVideoSyncIos *syncImpl);
   void DeinitDisplayLink(void);
