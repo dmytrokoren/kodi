@@ -903,8 +903,8 @@ void CDVDVideoCodecAVFoundation::UpdateFrameRateTracking(double ts)
     if (framerate_ms > 0.0 && (int)m_framerate_ms != (int)framerate_ms)
     {
       m_framerate_ms = framerate_ms;
-      CLog::Log(LOGDEBUG, "%s: detected new framerate(%f) at frame(%llu)",
-        __FUNCTION__, m_framerate_ms, m_framecount);
+      //CLog::Log(LOGDEBUG, "%s: detected new framerate(%f) at frame(%llu)",
+        //__FUNCTION__, m_framerate_ms, m_framecount);
     }
   }
 }
