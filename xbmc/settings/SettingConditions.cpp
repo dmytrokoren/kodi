@@ -42,9 +42,9 @@
 #include "utils/StringUtils.h"
 #include "utils/SystemInfo.h"
 #include "windowing/WindowingFactory.h"
-#if defined(TARGET_DARWIN_OSX)
+#if defined(TARGET_DARWIN)
 #include "platform/darwin/DarwinUtils.h"
-#endif// defined(TARGET_DARWIN_OSX)
+#endif
 
 bool AddonHasSettings(const std::string &condition, const std::string &value, const CSetting *setting, void *data)
 {
@@ -352,6 +352,16 @@ void CSettingConditions::Initialize()
   if (g_application.IsStandAlone())
     m_simpleConditions.insert("isstandalone");
 #endif
+#if defined(TARGET_DARWIN_TVOS)
+  if (__builtin_available(tvOS 11.2, *))
+  {
+    if (std::string(CDarwinUtils::getIosPlatformString()) == "AppleTV6,2")
+      m_simpleConditions.insert("hasDisplayRateSwitching");
+  }
+#elif !defined(TARGET_DARWIN_IOS)
+  m_simpleConditions.insert("hasDisplayRateSwitching");
+#endif
+
 
   if(CAEFactory::SupportsQualitySetting())
     m_simpleConditions.insert("has_ae_quality_levels");

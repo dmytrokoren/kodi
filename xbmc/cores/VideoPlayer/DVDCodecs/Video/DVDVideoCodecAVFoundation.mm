@@ -375,6 +375,8 @@ bool CDVDVideoCodecAVFoundation::Open(CDVDStreamInfo &hints, CDVDCodecOptions &o
 
     m_width = width;
     m_height = height;
+    m_codec = hints.codec;
+    m_profile = hints.profile;
 
     Create();
     m_messages->enqueue(START);
@@ -515,6 +517,10 @@ bool CDVDVideoCodecAVFoundation::GetPicture(DVDVideoPicture* pDvdVideoPicture)
     pDvdVideoPicture->iFlags       |= DVP_FLAG_DROPPED;
   pDvdVideoPicture->color_range     = 0;
   pDvdVideoPicture->color_matrix    = 4;
+  if (m_profile == FF_PROFILE_HEVC_MAIN_10 || m_profile == FF_PROFILE_HEVC_REXT)
+    pDvdVideoPicture->color_matrix  = 10;
+  else
+    pDvdVideoPicture->color_matrix  = 4;
   pDvdVideoPicture->iWidth          = m_width;
   pDvdVideoPicture->iHeight         = m_height;
   pDvdVideoPicture->iDisplayWidth   = pDvdVideoPicture->iWidth;

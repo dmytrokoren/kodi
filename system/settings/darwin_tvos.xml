@@ -69,11 +69,6 @@
   </section>
   <section id="player">
     <category id="videoplayer">
-      <group id="2">
-        <setting id="videoplayer.adjustrefreshrate">
-          <visible>false</visible>
-        </setting>
-      </group>
       <group id="3">
         <setting id="videoplayer.hqscalers">
           <visible>false</visible>
@@ -89,9 +84,6 @@
   <section id="system">
     <category id="display">
       <group id="1">
-        <setting id="videoscreen.delayrefreshchange">
-          <visible>false</visible>
-        </setting>
         <setting id="videoscreen.fakefullscreen">
           <visible>false</visible>
         </setting>
