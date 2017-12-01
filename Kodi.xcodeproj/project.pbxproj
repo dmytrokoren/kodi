@@ -2217,7 +2217,6 @@
 		DFE4BE061C661C5F0048EB03 /* AnnounceReceiver.mm in Sources */ = {isa = PBXBuildFile; fileRef = DFE4BE051C661C5F0048EB03 /* AnnounceReceiver.mm */; };
 		DFE4BE091C662A660048EB03 /* TVOSTopShelf.mm in Sources */ = {isa = PBXBuildFile; fileRef = DFE4BE081C662A660048EB03 /* TVOSTopShelf.mm */; };
 		DFE4BE111C6634ED0048EB03 /* TVServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE4BE101C6634ED0048EB03 /* TVServices.framework */; };
-		DFE4BE191C6634ED0048EB03 /* TVOSTopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DFE4BE0E1C6634ED0048EB03 /* TVOSTopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DFE4BE261C6635300048EB03 /* ServiceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = DFE4BE221C6635300048EB03 /* ServiceProvider.m */; };
 		DFE4BE291C663BD60048EB03 /* AnnounceReceiver.mm in Sources */ = {isa = PBXBuildFile; fileRef = DFE4BE051C661C5F0048EB03 /* AnnounceReceiver.mm */; };
 		DFE704181D15803F004EAA9D /* ActiveAEDSP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76EC19BC1D15514200D4AF19 /* ActiveAEDSP.cpp */; };
@@ -3471,28 +3470,7 @@
 			remoteGlobalIDString = 8DD76F740486A8DE00D96B5E;
 			remoteInfo = Kodi;
 		};
-		DFE4BE171C6634ED0048EB03 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DFE4BE0D1C6634ED0048EB03;
-			remoteInfo = TVOSTopShelf;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		DFE4BE1D1C6634EE0048EB03 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				DFE4BE191C6634ED0048EB03 /* TVOSTopShelf.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E3036EA1760F68A00D93596 /* FavouritesDirectory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FavouritesDirectory.cpp; sourceTree = "<group>"; };
@@ -6386,6 +6364,7 @@
 				E47252BE175115F9001C1AAA /* Support */,
 				DFE4BE0F1C6634ED0048EB03 /* Frameworks */,
 				19C28FBDFE9D53C911CA2CBB /* Products */,
+				DFFB69E51F79817A006388DB /* Recovered References */,
 			);
 			indentWidth = 2;
 			name = Kodi;
@@ -9154,6 +9133,14 @@
 			path = icon.iconset;
 			sourceTree = "<group>";
 		};
+		DFFB69E51F79817A006388DB /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				DF396ED51C42AC5100214C1A /* AESinkDARWINIOS.mm */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		E38E14610D25F9F900618676 /* xbmc */ = {
 			isa = PBXGroup;
 			children = (
@@ -10872,12 +10859,10 @@
 				DFC67EF91C1C642800360EDE /* copy frameworks */,
 				DFC67EFA1C1C642800360EDE /* genoutputdirlink */,
 				DFC67EFB1C1C642800360EDE /* codesign */,
-				DFE4BE1D1C6634EE0048EB03 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DFE4BE181C6634ED0048EB03 /* PBXTargetDependency */,
 			);
 			name = "Kodi-TVOS";
 			productName = "Kodi-iOS";
@@ -14666,11 +14651,6 @@
 			target = 8DD76F740486A8DE00D96B5E /* Kodi */;
 			targetProxy = 6E2FACC30E26E08100DF79EA /* PBXContainerItemProxy */;
 		};
-		DFE4BE181C6634ED0048EB03 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DFE4BE0D1C6634ED0048EB03 /* TVOSTopShelf */;
-			targetProxy = DFE4BE171C6634ED0048EB03 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -14841,6 +14821,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -14869,7 +14850,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/xbmc/platform/darwin/tvos/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.xbmc.kodi-tvos";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.memphiz.kodi-tvos";
 				PRODUCT_NAME = Kodi;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = appletvos;
@@ -14893,6 +14874,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -14920,7 +14902,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/xbmc/platform/darwin/tvos/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.xbmc.kodi-tvos";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.memphiz.kodi-tvos";
 				PRODUCT_NAME = Kodi;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = appletvos;
