@@ -324,7 +324,9 @@
           <control type="toggle" />
         </setting>
         <setting id="videoplayer.usevideotoolbox_hevc_hrd" type="boolean" parent="videoplayer.usevtb" label="13460" help="36628">
-          <default>false</default>
+          <requirement>HasVideoToolBoxDecoder</requirement>
+          <level>2</level>
+          <default>true</default>
           <dependencies>
             <dependency type="visible" setting="videoplayer.usevtb">true</dependency>
           </dependencies>
