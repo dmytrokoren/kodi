@@ -327,7 +327,7 @@
         <setting id="videoplayer.usevideotoolbox_hevc_hrd" type="boolean" parent="videoplayer.usevtb" label="13460" help="36628">
           <requirement>HasVideoToolBoxDecoder</requirement>
           <level>2</level>
-          <default>true</default>
+          <default>false</default>
           <dependencies>
             <dependency type="visible" setting="videoplayer.usevtb">true</dependency>
           </dependencies>
@@ -336,7 +336,7 @@
         <setting id="videoplayer.useavf" type="boolean" label="13453" help="13454">
           <requirement>hasAVF</requirement>
           <level>2</level>
-          <default>false</default>
+          <default>true</default>
           <control type="toggle" />
         </setting>
       </group>
