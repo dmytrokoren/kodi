@@ -97,6 +97,9 @@
 #if defined(TARGET_ANDROID)
 #include "AndroidAppDirectory.h"
 #endif
+#if defined(TARGET_DARWIN_TVOS)
+#include "TVOSDirectory.h"
+#endif
 #include "ResourceDirectory.h"
 
 using namespace XFILE;
@@ -118,7 +121,19 @@ IDirectory* CDirectoryFactory::Create(const CURL& url)
     return pDir;
 
 #ifdef TARGET_POSIX
-  if (url.GetProtocol().empty() || url.IsProtocol("file")) return new CPosixDirectory();
+  if (url.GetProtocol().empty() || url.IsProtocol("file"))
+  {
+#if defined(TARGET_DARWIN_TVOS)
+    if (CTVOSDirectory::WantsDirectory(url))
+    {
+      return new CTVOSDirectory();
+    }
+    else
+#endif
+    {
+      return new CPosixDirectory();
+    }
+  }
 #elif defined(TARGET_WINDOWS)
   if (url.GetProtocol().empty() || url.IsProtocol("file")) return new CWin32Directory();
 #else

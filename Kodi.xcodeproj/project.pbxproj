@@ -1063,6 +1063,7 @@
 		DF94A2561DF619AF00D0FC13 /* GUIDialogNewJoystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 68D916781DD0430E00058B06 /* GUIDialogNewJoystick.cpp */; };
 		DF9557401C3490ED00E5CDB1 /* AddonSystemSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39520F8F1C3174EE00272121 /* AddonSystemSettings.cpp */; };
 		DF98D98C1434F47D00A6EBE1 /* SkinVariable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF98D98A1434F47D00A6EBE1 /* SkinVariable.cpp */; };
+		DFA672A0203601FA00929E86 /* TVOSDirectory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFA6729D203601F500929E86 /* TVOSDirectory.cpp */; };
 		DFA8157E16713B1200E4E597 /* WakeOnAccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFA8157C16713B1200E4E597 /* WakeOnAccess.cpp */; };
 		DFAB049813F8376700B70BFB /* InertialScrollingHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFAB049613F8376700B70BFB /* InertialScrollingHandler.cpp */; };
 		DFACDB891D6CAC33003BBB92 /* PlatformDarwin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF8E55951D5F1D7000FD2BA3 /* PlatformDarwin.cpp */; };
@@ -5104,6 +5105,8 @@
 		DF98D98A1434F47D00A6EBE1 /* SkinVariable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SkinVariable.cpp; sourceTree = "<group>"; };
 		DF98D98B1434F47D00A6EBE1 /* SkinVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkinVariable.h; sourceTree = "<group>"; };
 		DFA0E8C219FD6BEE00269A92 /* VideoSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoSync.h; path = videosync/VideoSync.h; sourceTree = "<group>"; };
+		DFA6729D203601F500929E86 /* TVOSDirectory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TVOSDirectory.cpp; sourceTree = "<group>"; };
+		DFA6729E203601F600929E86 /* TVOSDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOSDirectory.h; sourceTree = "<group>"; };
 		DFA8157C16713B1200E4E597 /* WakeOnAccess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WakeOnAccess.cpp; sourceTree = "<group>"; };
 		DFA8157D16713B1200E4E597 /* WakeOnAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WakeOnAccess.h; sourceTree = "<group>"; };
 		DFAB049613F8376700B70BFB /* InertialScrollingHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InertialScrollingHandler.cpp; sourceTree = "<group>"; };
@@ -9794,6 +9797,8 @@
 				DF93D68E1444A8B0007C6459 /* SpecialProtocolFile.h */,
 				E38E17590D25F9FA00618676 /* StackDirectory.cpp */,
 				E38E175A0D25F9FA00618676 /* StackDirectory.h */,
+				DFA6729D203601F500929E86 /* TVOSDirectory.cpp */,
+				DFA6729E203601F600929E86 /* TVOSDirectory.h */,
 				DFB557911C4970C7005C23B0 /* TVOSFile.cpp */,
 				DFB557921C4970C7005C23B0 /* TVOSFile.h */,
 				433219D312E4C6A500CD7486 /* udf25.cpp */,
@@ -12406,6 +12411,7 @@
 				DFC67AB21C1C642800360EDE /* getbits.cpp in Sources */,
 				DFC67AB31C1C642800360EDE /* global.cpp in Sources */,
 				DFC67F051C1C64E200360EDE /* MainEAGLView.mm in Sources */,
+				DFA672A0203601FA00929E86 /* TVOSDirectory.cpp in Sources */,
 				DFC67AB41C1C642800360EDE /* int64.cpp in Sources */,
 				DFC67AB51C1C642800360EDE /* isnt.cpp in Sources */,
 				DFC67AB61C1C642800360EDE /* log.cpp in Sources */,
