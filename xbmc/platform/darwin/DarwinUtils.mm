@@ -285,6 +285,38 @@ bool CDarwinUtils::IsSnowLeopard(void)
   return isSnowLeopard == 1;
 }
 
+bool CDarwinUtils::IsAppleTV4KOrAbove(void)
+{
+  static int isAppleTV4KOrAbove = -1;
+  if (isAppleTV4KOrAbove == -1)
+  {
+    isAppleTV4KOrAbove = 0;
+#if defined(TARGET_DARWIN_TVOS)
+    if (std::string(CDarwinUtils::getIosPlatformString()) != "AppleTV5,3")
+      isAppleTV4KOrAbove = 1;
+#endif
+  }
+  return isAppleTV4KOrAbove == 1;
+}
+
+bool CDarwinUtils::HasDisplayRateSwitching(void)
+{
+  static int hasDisplayRateSwitching = -1;
+  if (hasDisplayRateSwitching == -1)
+  {
+    hasDisplayRateSwitching = 0;
+#if defined(TARGET_DARWIN_TVOS)
+    std::string avDisplayCriteria = "AVDisplayCriteria";
+    Class AVDisplayCriteriaClass = NSClassFromString([NSString stringWithUTF8String: avDisplayCriteria.c_str()]);
+    if (AVDisplayCriteriaClass)
+      hasDisplayRateSwitching = 1;
+#elif defined(TARGET_DARWIN_OSX)
+    hasDisplayRateSwitching = 1;
+#endif
+  }
+  return hasDisplayRateSwitching == 1;
+}
+
 bool CDarwinUtils::DeviceHas10BitH264(void)
 {
   static int has10BitH264 = -1;
