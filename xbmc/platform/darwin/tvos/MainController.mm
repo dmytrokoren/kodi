@@ -582,7 +582,7 @@ MainController *g_xbmcController;
   auto selectRecognizer = [[UILongPressGestureRecognizer alloc]
                           initWithTarget: self action: @selector(selectPressed:)];
   selectRecognizer.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeSelect]];
-  selectRecognizer.minimumPressDuration = 0.01;
+  selectRecognizer.minimumPressDuration = 0.001;
   selectRecognizer.delegate = self;
   [self.view addGestureRecognizer: selectRecognizer];
   [selectRecognizer release];
