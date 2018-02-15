@@ -1348,6 +1348,17 @@ CDemuxStream* CDVDDemuxFFmpeg::AddStream(int streamIdx)
       }
     case AVMEDIA_TYPE_VIDEO:
       {
+
+        // overlap in ffmpeg of DV Video and DolbyVison (dvh1)
+        // hack force it to AV_CODEC_ID_HEVC, should fix ffmpeg.
+        if (pStream->codec->codec_id == AV_CODEC_ID_DVVIDEO)
+        {
+          if (pStream->codec->codec_tag == MKTAG('d','v','h','1'))
+          {
+            pStream->codec->codec_id = AV_CODEC_ID_HEVC;
+            CLog::Log(LOGERROR, "%s - AV_CODEC_ID_DVVIDEO detected, forcing AV_CODEC_ID_HEVC", __FUNCTION__);
+          }
+        }
         CDemuxStreamVideoFFmpeg* st = new CDemuxStreamVideoFFmpeg(this, pStream);
         stream = st;
         if(strcmp(m_pFormatContext->iformat->name, "flv") == 0)

@@ -113,6 +113,7 @@ struct DVDVideoPicture
   unsigned int chroma_position;
   unsigned int color_primaries;
   unsigned int color_transfer;
+  unsigned int dynamic_range;
   unsigned int extended_format;
   char         stereo_mode[32];
 

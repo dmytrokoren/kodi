@@ -779,7 +779,8 @@ int CVideoPlayerVideo::OutputPicture(const DVDVideoPicture* src, double pts)
   flags |= GetFlagsChromaPosition(pPicture->chroma_position)
               |  GetFlagsColorMatrix(pPicture->color_matrix, pPicture->iWidth, pPicture->iHeight, m_hints.codec == FF_PROFILE_HEVC_MAIN_10)
               |  GetFlagsColorPrimaries(pPicture->color_primaries)
-              |  GetFlagsColorTransfer(pPicture->color_transfer);
+              |  GetFlagsColorTransfer(pPicture->color_transfer)
+              |  GetFlagsDynamicRange(pPicture->dynamic_range);
 
 
   if(m_bAllowFullscreen)

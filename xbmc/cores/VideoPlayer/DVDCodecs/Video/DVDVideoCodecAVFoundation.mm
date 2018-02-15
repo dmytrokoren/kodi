@@ -400,7 +400,7 @@ bool CDVDVideoCodecAVFoundation::Open(CDVDStreamInfo &hints, CDVDCodecOptions &o
     m_height = height;
     m_codec = hints.codec;
     m_profile = hints.profile;
-    if (hints.colorrange == AVCOL_RANGE_JPEG)
+    if (hints.  colorrange == AVCOL_RANGE_JPEG)
       m_colorrange = 1;
     else
       m_colorrange = 0;
