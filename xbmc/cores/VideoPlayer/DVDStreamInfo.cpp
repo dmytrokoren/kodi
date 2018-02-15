@@ -64,6 +64,7 @@ void CDVDStreamInfo::Clear()
   ptsinvalid = false;
   forced_aspect = false;
   bitsperpixel = 0;
+  colorspace = 0;
   stereo_mode.clear();
   maybe_interlaced = false;
 
@@ -107,6 +108,7 @@ bool CDVDStreamInfo::Equal(const CDVDStreamInfo& right, bool withextradata)
   ||  ptsinvalid != right.ptsinvalid
   ||  forced_aspect != right.forced_aspect
   ||  bitsperpixel != right.bitsperpixel
+  ||  colorspace != right.colorspace
   ||  vfr      != right.vfr
   ||  maybe_interlaced != right.maybe_interlaced
   ||  stereo_mode != right.stereo_mode ) return false;
@@ -174,6 +176,7 @@ void CDVDStreamInfo::Assign(const CDVDStreamInfo& right, bool withextradata)
   forced_aspect = right.forced_aspect;
   orientation = right.orientation;
   bitsperpixel = right.bitsperpixel;
+  colorspace = right.colorspace;
   vfr = right.vfr;
   software = right.software;
   stereo_mode = right.stereo_mode;
@@ -234,6 +237,7 @@ void CDVDStreamInfo::Assign(const CDemuxStream& right, bool withextradata)
     forced_aspect = stream->bForcedAspect;
     orientation = stream->iOrientation;
     bitsperpixel = stream->iBitsPerPixel;
+    colorspace = stream->iColorSpace;
     stereo_mode = stream->stereo_mode;
     maybe_interlaced = stream->bMaybeInterlaced;
   }
