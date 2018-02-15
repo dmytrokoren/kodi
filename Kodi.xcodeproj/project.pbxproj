@@ -1064,6 +1064,7 @@
 		DF9557401C3490ED00E5CDB1 /* AddonSystemSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39520F8F1C3174EE00272121 /* AddonSystemSettings.cpp */; };
 		DF98D98C1434F47D00A6EBE1 /* SkinVariable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF98D98A1434F47D00A6EBE1 /* SkinVariable.cpp */; };
 		DFA672A0203601FA00929E86 /* TVOSDirectory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFA6729D203601F500929E86 /* TVOSDirectory.cpp */; };
+		DFA672A220361FA700929E86 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA672A120361FA700929E86 /* AVKit.framework */; };
 		DFA8157E16713B1200E4E597 /* WakeOnAccess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFA8157C16713B1200E4E597 /* WakeOnAccess.cpp */; };
 		DFAB049813F8376700B70BFB /* InertialScrollingHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFAB049613F8376700B70BFB /* InertialScrollingHandler.cpp */; };
 		DFACDB891D6CAC33003BBB92 /* PlatformDarwin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF8E55951D5F1D7000FD2BA3 /* PlatformDarwin.cpp */; };
@@ -5107,6 +5108,7 @@
 		DFA0E8C219FD6BEE00269A92 /* VideoSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoSync.h; path = videosync/VideoSync.h; sourceTree = "<group>"; };
 		DFA6729D203601F500929E86 /* TVOSDirectory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TVOSDirectory.cpp; sourceTree = "<group>"; };
 		DFA6729E203601F600929E86 /* TVOSDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVOSDirectory.h; sourceTree = "<group>"; };
+		DFA672A120361FA700929E86 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS11.2.sdk/System/Library/Frameworks/AVKit.framework; sourceTree = DEVELOPER_DIR; };
 		DFA8157C16713B1200E4E597 /* WakeOnAccess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WakeOnAccess.cpp; sourceTree = "<group>"; };
 		DFA8157D16713B1200E4E597 /* WakeOnAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WakeOnAccess.h; sourceTree = "<group>"; };
 		DFAB049613F8376700B70BFB /* InertialScrollingHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InertialScrollingHandler.cpp; sourceTree = "<group>"; };
@@ -6310,6 +6312,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFA672A220361FA700929E86 /* AVKit.framework in Frameworks */,
 				DFC67EC91C1C642800360EDE /* MediaPlayer.framework in Frameworks */,
 				DFC67ECA1C1C642800360EDE /* AVFoundation.framework in Frameworks */,
 				DFC67ECB1C1C642800360EDE /* CFNetwork.framework in Frameworks */,
@@ -9034,6 +9037,7 @@
 			isa = PBXGroup;
 			children = (
 				DFBD21651FD18FDB00AE9D5F /* AVKit.framework */,
+				DFA672A120361FA700929E86 /* AVKit.framework */,
 				DFE4BE101C6634ED0048EB03 /* TVServices.framework */,
 			);
 			name = Frameworks;
