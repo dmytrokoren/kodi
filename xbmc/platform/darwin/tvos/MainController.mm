@@ -578,11 +578,18 @@ MainController *g_xbmcController;
   playPauseRecognizer.delegate  = self;
   [m_glView addGestureRecognizer: playPauseRecognizer];
   [playPauseRecognizer release];
+
+  auto longSelectRecognizer = [[UILongPressGestureRecognizer alloc]
+                           initWithTarget: self action: @selector(SiriLongSelectHandler:)];
+  longSelectRecognizer.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeSelect]];
+  longSelectRecognizer.minimumPressDuration = 0.001;
+  longSelectRecognizer.delegate = self;
+  [m_glView addGestureRecognizer: longSelectRecognizer];
+  [longSelectRecognizer release];
   
-  auto selectRecognizer = [[UILongPressGestureRecognizer alloc]
+  auto selectRecognizer = [[UITapGestureRecognizer alloc]  
                           initWithTarget: self action: @selector(selectPressed:)];
   selectRecognizer.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeSelect]];
-  selectRecognizer.minimumPressDuration = 0.001;
   selectRecognizer.delegate = self;
   [self.view addGestureRecognizer: selectRecognizer];
   [selectRecognizer release];
@@ -632,7 +639,7 @@ MainController *g_xbmcController;
   }
 }
 //--------------------------------------------------------------
-- (void)selectPressed:(UITapGestureRecognizer *)sender
+- (void)SiriLongSelectHandler:(UITapGestureRecognizer *)sender
 {
   // if we have clicked select while scrolling up/down we need to reset direction of pan
   m_clickResetPan = true;
@@ -661,6 +668,19 @@ MainController *g_xbmcController;
       
       // start remote timeout
       [self startRemoteTimer];
+      break;
+    default:
+      break;
+  }
+}
+
+- (void)SiriSelectHandler:(UITapGestureRecognizer *)sender
+{
+  CLog::Log(LOGDEBUG, "SiriSelectHandler");
+  switch (sender.state)
+  {
+    case UIGestureRecognizerStateEnded:
+      [self sendButtonPressed:5];
       break;
     default:
       break;
