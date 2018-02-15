@@ -411,6 +411,16 @@ bool CDVDVideoCodecAVFoundation::Open(CDVDStreamInfo &hints, CDVDCodecOptions &o
     
     Create();
     m_messages->enqueue(START);
+    
+    std::list<EINTERLACEMETHOD> deintMethods;
+    deintMethods.push_back(EINTERLACEMETHOD::VS_INTERLACEMETHOD_NONE);
+    m_processInfo.UpdateDeinterlacingMethods(deintMethods);
+    m_processInfo.SetVideoDecoderName(m_pFormatName, true);
+    m_processInfo.SetVideoDimensions(hints.width, hints.height);
+    m_processInfo.SetVideoPixelFormat("AVPlayer");
+    m_processInfo.SetVideoDeintMethod("none");
+    m_processInfo.SetVideoDAR(hints.aspect);
+    
     return true;
   }
   
