@@ -74,7 +74,7 @@ public:
   virtual unsigned GetAllowedReferences();
   virtual void SetCodecControl(int flags);
   virtual void Reopen();
-
+  
 protected:
   void DisplayQueuePop();
   bool CreateParameterSetArraysFromExtraData();
@@ -84,21 +84,21 @@ protected:
   bool CreateVTSessionAndInitPictureFrame();
   void DestroyVTSession();
   static void VTDecoderCallback(
-    void *refcon, void *frameInfo,
-    OSStatus status, UInt32 infoFlags, CVBufferRef imageBuffer, CMTime pts, CMTime duration);
-
+                                void *refcon, void *frameInfo,
+                                OSStatus status, UInt32 infoFlags, CVBufferRef imageBuffer, CMTime pts, CMTime duration);
+  
   CDVDStreamInfo     m_hints;
   CDVDCodecOptions   m_options;
   void              *m_vt_session = nullptr;    // opaque videotoolbox session
   CBitstreamConverter *m_bitstream = nullptr;
-
+  
   CMFormatDescriptionRef m_fmt_desc = nullptr;
-
+  
   const char       *m_pFormatName;
   bool              m_DropPictures;
   int               m_codecControlFlags;
   DVDVideoPicture   m_videobuffer;
-
+  
   pthread_mutex_t   m_queue_mutex;    // mutex protecting queue manipulation
   frame_queue      *m_display_queue;  // display-order queue - next display frame is always at the queue head
   std::atomic<int>  m_queue_depth;    // we will try to keep the queue depth at m_max_ref_frames
