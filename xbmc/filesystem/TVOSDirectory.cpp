@@ -24,6 +24,7 @@
 #include "SpecialProtocol.h"
 #include "URL.h"
 #include "platform/darwin/DarwinNSUserDefaults.h"
+#include "linux/XTimeUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/log.h"
 
