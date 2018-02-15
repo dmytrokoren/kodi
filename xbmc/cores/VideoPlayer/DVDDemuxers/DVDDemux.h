@@ -174,6 +174,7 @@ public:
   int iOrientation; // orientation of the video in degress counter clockwise
   int iBitsPerPixel;
   int iColorSpace;
+  int iColorRange;
   std::string stereo_mode; // expected stereo mode
   bool bMaybeInterlaced; // stream 'might' be interlaced, on some, we can't tell for sure unless decoding.
 };
