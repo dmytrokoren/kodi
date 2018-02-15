@@ -59,27 +59,29 @@ public:
   virtual const char* GetName(void) { return (const char*)m_pFormatName; }
   virtual unsigned GetAllowedReferences();
   virtual void SetCodecControl(int flags);
-
+  
 protected:
   virtual void  Process();
-
+  
   void          DrainQueues();
+  void          DumpTrackingQueue();
   void          StartSampleProviderWithBlock();
   void          StopSampleProvider();
-
+  
   double        GetPlayerClockSeconds();
   void          UpdateFrameRateTracking(double ts);
-
+  void          ProbeNALUnits(uint8_t *pData, int iSize);
+  
   VideoLayerView         *m_decoder;        // opaque decoder reference
-	dispatch_queue_t        m_providerQueue;
+  dispatch_queue_t        m_providerQueue;
   CMFormatDescriptionRef  m_fmt_desc;
   pthread_mutex_t         m_sampleBuffersMutex;    // mutex protecting queue manipulation
   std::queue<CMSampleBufferRef> m_sampleBuffers;
-
+  
   size_t                  m_max_ref_frames = 4;
   pthread_mutex_t         m_trackerQueueMutex;       // mutex protecting queue manipulation
   std::list<pktTracker*>  m_trackerQueue;
-
+  
   CDVDClock              *m_clock = nullptr;
   int32_t                 m_format;
   const char             *m_pFormatName;
@@ -89,15 +91,18 @@ protected:
   int                     m_speed;
   AVCodecID               m_codec;
   int                     m_profile;
+  int                     m_colorrange;
+  int                     m_colorspace;
+  int                     m_dynamicrange;
   int                     m_width;
   int                     m_height;
   DVDVideoPicture         m_videobuffer;
   CBitstreamConverter    *m_bitstream;
   bool                    m_withBlockRunning;
-
+  
   CAVFCodecMessage       *m_messages;
   uint64_t                m_framecount;
-  double                  m_framerate_ms;
+  double                  m_fps;
+  double                  m_lastTrackingTS;
 };
 #endif
-
