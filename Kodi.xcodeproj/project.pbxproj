@@ -14861,7 +14861,6 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/xbmc/platform/darwin/tvos/Info.plist";
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.memphiz.kodi-tvos";
 				PRODUCT_NAME = Kodi;
 				PROVISIONING_PROFILE = "";
@@ -14913,7 +14912,6 @@
 					$XBMC_DEPENDS/include/libxml2,
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/xbmc/platform/darwin/tvos/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.memphiz.kodi-tvos";
 				PRODUCT_NAME = Kodi;
 				PROVISIONING_PROFILE = "";
@@ -14972,7 +14970,6 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
 		};
@@ -15016,7 +15013,6 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				TVOS_DEPLOYMENT_TARGET = 9.1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
