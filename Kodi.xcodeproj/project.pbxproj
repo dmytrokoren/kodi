@@ -880,6 +880,7 @@
 		DF29BCFE1B5D911800904347 /* GUIWindowEventLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF29BCE61B5D911700904347 /* GUIWindowEventLog.cpp */; };
 		DF29BD021B5D913B00904347 /* EventsDirectory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF29BD001B5D913B00904347 /* EventsDirectory.cpp */; };
 		DF29BD031B5D913B00904347 /* EventsDirectory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF29BD001B5D913B00904347 /* EventsDirectory.cpp */; };
+		DF2B2CE820375A6300A106A5 /* TVOSTopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DFE4BE0E1C6634ED0048EB03 /* TVOSTopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DF32466219E931A8005E8CFB /* ActiveAEResampleFFMPEG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF32466019E931A8005E8CFB /* ActiveAEResampleFFMPEG.cpp */; };
 		DF32466319E931A8005E8CFB /* ActiveAEResampleFFMPEG.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF32466019E931A8005E8CFB /* ActiveAEResampleFFMPEG.cpp */; };
 		DF3488E713FD958F0026A711 /* GUIAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF3488E513FD958F0026A711 /* GUIAction.cpp */; };
@@ -3472,7 +3473,28 @@
 			remoteGlobalIDString = 8DD76F740486A8DE00D96B5E;
 			remoteInfo = Kodi;
 		};
+		DF2B2CE920375A6300A106A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DFE4BE0D1C6634ED0048EB03;
+			remoteInfo = TVOSTopShelf;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DF2B2CEB20375A6300A106A5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DF2B2CE820375A6300A106A5 /* TVOSTopShelf.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E3036EA1760F68A00D93596 /* FavouritesDirectory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FavouritesDirectory.cpp; sourceTree = "<group>"; };
@@ -10870,10 +10892,12 @@
 				DFC67EF91C1C642800360EDE /* copy frameworks */,
 				DFC67EFA1C1C642800360EDE /* genoutputdirlink */,
 				DFC67EFB1C1C642800360EDE /* codesign */,
+				DF2B2CEB20375A6300A106A5 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DF2B2CEA20375A6300A106A5 /* PBXTargetDependency */,
 			);
 			name = "Kodi-TVOS";
 			productName = "Kodi-iOS";
@@ -14662,6 +14686,11 @@
 			isa = PBXTargetDependency;
 			target = 8DD76F740486A8DE00D96B5E /* Kodi */;
 			targetProxy = 6E2FACC30E26E08100DF79EA /* PBXContainerItemProxy */;
+		};
+		DF2B2CEA20375A6300A106A5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DFE4BE0D1C6634ED0048EB03 /* TVOSTopShelf */;
+			targetProxy = DF2B2CE920375A6300A106A5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
