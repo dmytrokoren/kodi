@@ -80,7 +80,7 @@ void CWinSystemBase::UpdateDesktopResolution(RESOLUTION_INFO& newRes, int screen
   newRes.iScreenHeight = height;
   newRes.strMode = StringUtils::Format("%dx%d", width, height);
   if (refreshRate > 1)
-    newRes.strMode += StringUtils::Format("@ %.2f", refreshRate);
+    newRes.strMode += StringUtils::Format("@ %.2f", (float)((int)refreshRate));
   if (dwFlags & D3DPRESENTFLAG_INTERLACED)
     newRes.strMode += "i";
   if (dwFlags & D3DPRESENTFLAG_MODE3DTB)
