@@ -588,7 +588,7 @@ MainController *g_xbmcController;
   [longSelectRecognizer release];
   
   auto selectRecognizer = [[UITapGestureRecognizer alloc]  
-                          initWithTarget: self action: @selector(selectPressed:)];
+                          initWithTarget: self action: @selector(SiriSelectHandler:)];
   selectRecognizer.allowedPressTypes = @[[NSNumber numberWithInteger:UIPressTypeSelect]];
   selectRecognizer.delegate = self;
   [self.view addGestureRecognizer: selectRecognizer];
