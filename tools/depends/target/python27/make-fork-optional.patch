@@ -13,3 +13,19 @@
  #ifndef _MSC_VER
  
  #if defined(__sgi)&&_COMPILER_VERSION>=700
+--- Lib/platform.py.orig	2018-02-21 20:34:56.000000000 +0100
++++ Lib/platform.py	2018-02-21 20:39:23.000000000 +0100
+@@ -959,10 +959,10 @@
+         return default
+     try:
+         f = os.popen('uname %s 2> %s' % (option, DEV_NULL))
+-    except (AttributeError,os.error):
++        output = string.strip(f.read())
++        rc = f.close()
++    except (AttributeError,os.error,IOError):
+         return default
+-    output = string.strip(f.read())
+-    rc = f.close()
+     if not output or rc:
+         return default
+     else:
