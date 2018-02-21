@@ -5,7 +5,7 @@ DEPS= ../../Makefile.include Makefile
 
 # lib name, version
 LIBNAME=ldid
-VERSION=1.2.1
+VERSION=2
 SOURCE=$(LIBNAME)-$(VERSION)
 ARCHIVE=$(SOURCE).tar.gz
 
