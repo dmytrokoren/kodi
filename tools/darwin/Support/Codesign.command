@@ -21,12 +21,24 @@ if [ "${PLATFORM_NAME}" == "iphoneos" ] || [ "${PLATFORM_NAME}" == "appletvos" ]
     /Users/Shared/buildslave/keychain_unlock.sh
   fi
 
-  #do fake sign - needed for jailbroken ios5.1 devices for some reason
+  #do fake sign - needed for jailbroken ios5.1 devices and tvos10.2 jailbreaks
   if [ -f ${LDID} ]; then
     find ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/ -name "*.dylib" | xargs ${LDID} -S
     find ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/ -name "*.so" | xargs ${LDID} -S
-    ${LDID} -S ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Kodi
-    ${LDID} -S ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/PlugIns/TVOSTopShelf.appex/TVOSTopShelf
+    ${LDID} -S ${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${APP_NAME}
+
+    #repackage python eggs
+    EGGS=`find ${CODESIGNING_FOLDER_PATH} -name "*.egg" -type f`
+    for i in $EGGS; do
+      echo $i
+      mkdir del
+      unzip $i -d del
+      find ./del/ -name "*.$binext" -type f |  xargs ${LDID} -S
+      rm $i
+      cd del && zip -r $i ./* &&  cd ..
+      rm -r ./del/
+    done
+
   fi
 
   # pull the CFBundleIdentifier out of the built xxx.app

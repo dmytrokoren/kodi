@@ -10911,6 +10911,7 @@
 				DFE4BE0A1C6634ED0048EB03 /* Sources */,
 				DFE4BE0B1C6634ED0048EB03 /* Frameworks */,
 				DFE4BE0C1C6634ED0048EB03 /* Resources */,
+				DF7A22F42041D041002A9ECA /* codesign */,
 			);
 			buildRules = (
 			);
@@ -11106,6 +11107,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "tools/darwin/Support/updateversioninfo-osx.command";
+		};
+		DF7A22F42041D041002A9ECA /* codesign */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = codesign;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = tools/darwin/Support/Codesign.command;
 		};
 		DFC67A9E1C1C642800360EDE /* Make interface-python */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -14956,6 +14971,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APP_NAME = TVOSTopShelf;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -15007,6 +15023,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APP_NAME = TVOSTopShelf;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
