@@ -37,6 +37,7 @@
 #include "video/windows/GUIWindowVideoBase.h"
 #include "filesystem/File.h"
 
+#include "utils/log.h"
 #include "utils/StringUtils.h"
 #include "utils/URIUtils.h"
 #include "utils/Base64.h"
@@ -71,12 +72,14 @@ void CTVOSTopShelf::SetTopShelfItems(CFileItemList& movies, CFileItemList& tv)
   NSMutableArray * movieArray = [[NSMutableArray alloc] init];
   NSMutableArray * tvArray = [[NSMutableArray alloc] init];
   NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:sharedID];
+  NSMutableDictionary *sharedDict = [[NSMutableDictionary alloc] init];
   
   NSFileManager* fileManager = [NSFileManager defaultManager];
-  NSURL* storeUrl = [fileManager containerURLForSecurityApplicationGroupIdentifier:sharedID];
-  storeUrl = [storeUrl URLByAppendingPathComponent:@"Library" isDirectory:TRUE];
-  storeUrl = [storeUrl URLByAppendingPathComponent:@"Caches" isDirectory:TRUE];
+  NSURL* storeUrl = [tvosShared getSharedURL];
+  NSURL* sharedDictUrl = [storeUrl URLByAppendingPathComponent:@"shared.dict"];
   storeUrl = [storeUrl URLByAppendingPathComponent:@"RA" isDirectory:TRUE];
+  
+  CLog::Log(LOGDEBUG, "TopShelf: using shared path %s (jailbroken: %s)\n", [[storeUrl path] cStringUsingEncoding:NSUTF8StringEncoding], [tvosShared isJailbroken] ? "yes" : "no");
   
   // store all old thumbs in array
   NSMutableArray *filePaths = (NSMutableArray *)[fileManager contentsOfDirectoryAtPath:storeUrl.path error:nil];
@@ -105,7 +108,7 @@ void CTVOSTopShelf::SetTopShelfItems(CFileItemList& movies, CFileItemList& tv)
         if ([filePaths containsObject:[NSString stringWithUTF8String:fileName.c_str()]])
           [filePaths removeObject:[NSString stringWithUTF8String:fileName.c_str()]];
         
-      
+      CLog::Log(LOGDEBUG, "TopShelf: - adding movie to array %s\n",item->GetLabel().c_str());
       [movieDict setValue:[NSString stringWithUTF8String:item->GetLabel().c_str()] forKey:@"title"];
       [movieDict setValue:[NSString stringWithUTF8String:fileName.c_str()] forKey:@"thumb"];
       std::string fullPath = item->GetVideoInfoTag()->GetPath();
@@ -114,8 +117,10 @@ void CTVOSTopShelf::SetTopShelfItems(CFileItemList& movies, CFileItemList& tv)
       [movieArray addObject:movieDict];
     }
     [shared setObject:movieArray forKey:@"movies"];
+    [sharedDict setObject:movieArray forKey:@"movies"];
     NSString *tvTitle = [NSString stringWithUTF8String:g_localizeStrings.Get(20386).c_str()];
     [shared setObject:tvTitle forKey:@"moviesTitle"];
+    [sharedDict setObject:tvTitle forKey:@"moviesTitle"];// for jailbroken devices
   }
   else
   {
@@ -158,6 +163,7 @@ void CTVOSTopShelf::SetTopShelfItems(CFileItemList& movies, CFileItemList& tv)
         if ([filePaths containsObject:[NSString stringWithUTF8String:fileName.c_str()]])
           [filePaths removeObject:[NSString stringWithUTF8String:fileName.c_str()]];
       
+      CLog::Log(LOGDEBUG, "TopShelf: - adding tvshow to array %s\n",title.c_str());
       [tvDict setValue:[NSString stringWithUTF8String:title.c_str()] forKey:@"title"];
       [tvDict setValue:[NSString stringWithUTF8String:fileName.c_str()] forKey:@"thumb"];
 
@@ -166,8 +172,10 @@ void CTVOSTopShelf::SetTopShelfItems(CFileItemList& movies, CFileItemList& tv)
       [tvArray addObject:tvDict];
     }
     [shared setObject:tvArray forKey:@"tv"];
+    [sharedDict setObject:tvArray forKey:@"tv"];// for jailbroken devices
     NSString *tvTitle = [NSString stringWithUTF8String:g_localizeStrings.Get(20387).c_str()];
     [shared setObject:tvTitle forKey:@"tvTitle"];
+    [sharedDict setObject:tvTitle forKey:@"tvTitle"];// for jailbroken devices
   }
   else
   {
@@ -179,6 +187,11 @@ void CTVOSTopShelf::SetTopShelfItems(CFileItemList& movies, CFileItemList& tv)
   // remove unused thumbs from cache folder
   for (NSString *strFiles in filePaths)
     [fileManager removeItemAtURL:[storeUrl URLByAppendingPathComponent:strFiles isDirectory:FALSE] error:nil];
+  
+  if ([tvosShared isJailbroken])
+  {
+    [sharedDict writeToFile:[sharedDictUrl path] atomically:TRUE];
+  }
   
   [shared synchronize];
 }

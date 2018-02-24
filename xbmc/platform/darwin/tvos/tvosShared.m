@@ -22,6 +22,9 @@
 
 @interface tvosShared : NSObject
 + (NSString *)getSharedID;
++ (NSURL *)getSharedURL;
++ (BOOL) IsTVOSSandboxed;
++ (BOOL)isJailbroken;
 @end
 
 @implementation tvosShared : NSObject
@@ -37,4 +40,44 @@
   }
   return [@"group." stringByAppendingString:bundleID];
 }
+
++ (NSURL *)getSharedURL {
+  #define JAILBROKEN_SHARED_FOLDER @"/var/mobile/Library/Caches"
+  if ([self isJailbroken])
+  {
+    return [[NSURL fileURLWithPath:JAILBROKEN_SHARED_FOLDER] URLByAppendingPathComponent:[self getSharedID]];
+  }
+  else
+  {
+        NSFileManager* fileManager = [NSFileManager defaultManager];
+        return [fileManager containerURLForSecurityApplicationGroupIdentifier:[self getSharedID]];
+  }
+}
+
++ (BOOL) IsTVOSSandboxed
+{
+  static int ret = -1;
+  if (ret == -1)
+  {
+    NSBundle *bundle = [NSBundle mainBundle];
+    if ([[bundle.bundleURL pathExtension] isEqualToString:@"appex"]) { // We're in a extension
+      // Peel off two directory levels - Kodi.app/PlugIns/MY_APP_EXTENSION.appex
+      bundle = [NSBundle bundleWithURL:[[bundle.bundleURL URLByDeletingLastPathComponent] URLByDeletingLastPathComponent]];
+    }
+
+    ret = 1;// default to "sandboxed"
+
+    // we re NOT sandboxed if we are installed in /var/mobile/Applications with greeng0blin jailbreak
+    if ([[bundle executablePath] containsString:@"/var/mobile/Applications/"])
+    {
+      ret = 0;
+    }
+  }
+  return ret == 1;
+}
+
++ (BOOL)isJailbroken {
+  return ![self IsTVOSSandboxed];
+}
+
 @end

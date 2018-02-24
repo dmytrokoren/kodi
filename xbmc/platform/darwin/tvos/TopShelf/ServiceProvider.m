@@ -45,19 +45,31 @@
 
 - (NSArray *)topShelfItems
 {
-  NSString *sharedID = [tvosShared getSharedID];
+    NSString *sharedID = [tvosShared getSharedID];
     NSMutableArray *topShelfItems = [[NSMutableArray alloc] init];
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:sharedID];
   
     TVContentIdentifier *wrapperIdentifier = [[TVContentIdentifier alloc] initWithIdentifier:@"shelf-wrapper" container:nil];
+
+    NSURL* storeUrl = [tvosShared getSharedURL];
+    NSArray *movieArray = nil;
+    NSArray * tvArray = nil;
+    NSMutableDictionary *sharedDict = nil;
   
-    NSFileManager* fileManager = [NSFileManager defaultManager];
-    NSURL* storeUrl = [fileManager containerURLForSecurityApplicationGroupIdentifier:sharedID];
-    storeUrl = [storeUrl URLByAppendingPathComponent:@"Library" isDirectory:TRUE];
-    storeUrl = [storeUrl URLByAppendingPathComponent:@"Caches" isDirectory:TRUE];
+    if ([tvosShared isJailbroken])
+    {
+      NSURL* sharedDictUrl = [storeUrl URLByAppendingPathComponent:@"shared.dict" isDirectory:FALSE];
+      sharedDict = [NSMutableDictionary dictionaryWithContentsOfFile:[sharedDictUrl path]];
+      movieArray = [sharedDict valueForKey:@"movies"];
+      tvArray = [sharedDict valueForKey:@"tv"];
+    }
+    else
+    {
+      movieArray = [shared objectForKey:@"movies"];
+      tvArray = [shared valueForKey:@"tv"];
+    }
+
     storeUrl = [storeUrl URLByAppendingPathComponent:@"RA" isDirectory:TRUE];
-  
-    NSMutableArray *movieArray = [shared objectForKey:@"movies"];
   
     if ([movieArray count] > 0)
     {
@@ -79,13 +91,20 @@
         contentItem.playURL = [NSURL URLWithString:[NSString stringWithFormat:@"kodi://play/movie/%@",url]];
         [ContentItems addObject:contentItem];
       }
-      itemMovie.title = [shared stringForKey:@"moviesTitle"];;
+      
+      if ([tvosShared isJailbroken])
+      {
+        itemMovie.title = [sharedDict valueForKey:@"moviesTitle"];
+      }
+      else
+      {
+        itemMovie.title = [shared stringForKey:@"moviesTitle"];
+      }
+
       itemMovie.topShelfItems = ContentItems;
       [topShelfItems addObject:itemMovie];
     }
-  
-    NSArray * tvArray = [shared valueForKey:@"tv"];
-  
+
     if ([tvArray count] > 0)
     {
       TVContentItem *itemTv = [[TVContentItem alloc] initWithContentIdentifier:wrapperIdentifier];
@@ -106,7 +125,16 @@
         contentItem.playURL = [NSURL URLWithString:[NSString stringWithFormat:@"kodi://play/tv/%@",url]];
         [ContentItemsTv addObject:contentItem];
       }
-      itemTv.title = [shared stringForKey:@"tvTitle"];
+      
+      if ([tvosShared isJailbroken])
+      {
+        itemTv.title = [sharedDict valueForKey:@"tvTitle"];
+      }
+      else
+      {
+        itemTv.title = [shared stringForKey:@"tvTitle"];
+      }
+
       itemTv.topShelfItems = ContentItemsTv;
       [topShelfItems addObject:itemTv];
     }
