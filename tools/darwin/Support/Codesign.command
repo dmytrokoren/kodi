@@ -33,7 +33,7 @@ if [ "${PLATFORM_NAME}" == "iphoneos" ] || [ "${PLATFORM_NAME}" == "appletvos" ]
       echo $i
       mkdir del
       unzip $i -d del
-      find ./del/ -name "*.$binext" -type f |  xargs ${LDID} -S
+      find ./del/ -name "*.so" -type f |  xargs ${LDID} -S
       rm $i
       cd del && zip -r $i ./* &&  cd ..
       rm -r ./del/
