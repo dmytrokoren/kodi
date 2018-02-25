@@ -179,25 +179,28 @@ bool CDVDVideoCodecVideoToolBox::Open(CDVDStreamInfo &hints, CDVDCodecOptions &o
   if (hints.codec == AV_CODEC_ID_HEVC && hints.ptsinvalid)
     return false;
   
-  CBitstreamConverter bs;
-  if (!bs.Open(hints.codec, (uint8_t*)hints.extradata, hints.extrasize, false))
+  if (hints.codec == AV_CODEC_ID_H264)
   {
-    return false;
-  }
-  CFDataRef avcCData = CFDataCreate(kCFAllocatorDefault,
-                                    (const uint8_t*)bs.GetExtraData(), bs.GetExtraSize());
-  bool interlaced = true;
-  int max_ref_frames;
-  uint8_t *spc = (uint8_t*)CFDataGetBytePtr(avcCData) + 6;
-  uint32_t sps_size = BS_RB16(spc);
-  if (sps_size)
-    bs.parseh264_sps(spc+3, sps_size-1, &interlaced, &max_ref_frames);
-  CFRelease(avcCData);
+    CBitstreamConverter bs;
+    if (!bs.Open(hints.codec, (uint8_t*)hints.extradata, hints.extrasize, false))
+    {
+      return false;
+    }
+    CFDataRef avcCData = CFDataCreate(kCFAllocatorDefault,
+                                      (const uint8_t*)bs.GetExtraData(), bs.GetExtraSize());
+    bool interlaced = true;
+    int max_ref_frames;
+    uint8_t *spc = (uint8_t*)CFDataGetBytePtr(avcCData) + 6;
+    uint32_t sps_size = BS_RB16(spc);
+    if (sps_size)
+      bs.parseh264_sps(spc+3, sps_size-1, &interlaced, &max_ref_frames);
+    CFRelease(avcCData);
   
-  if (interlaced)
-  {
-    CLog::Log(LOGNOTICE, "%s - interlaced content.", __FUNCTION__);
-    return false;
+    if (interlaced)
+    {
+      CLog::Log(LOGNOTICE, "%s - interlaced content.", __FUNCTION__);
+      return false;
+    }
   }
   
   if (CSettings::GetInstance().GetBool(CSettings::SETTING_VIDEOPLAYER_USEVTB) && !hints.software)
