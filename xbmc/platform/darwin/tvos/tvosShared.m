@@ -50,7 +50,10 @@
   else
   {
         NSFileManager* fileManager = [NSFileManager defaultManager];
-        return [fileManager containerURLForSecurityApplicationGroupIdentifier:[self getSharedID]];
+        NSURL *sharedUrl = [fileManager containerURLForSecurityApplicationGroupIdentifier:[self getSharedID]];
+        sharedUrl = [sharedUrl URLByAppendingPathComponent:@"Library" isDirectory:TRUE];
+        sharedUrl = [sharedUrl URLByAppendingPathComponent:@"Caches" isDirectory:TRUE];
+        return sharedUrl;
   }
 }
 
