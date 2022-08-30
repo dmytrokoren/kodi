@@ -11,7 +11,7 @@
 **1. Getting the source code**
 -----------------------------------------------------------------------------
 ```
-git clone https://github.com/Memphiz/xbmc.git --depth=1 --branch yab --single-branch
+git clone https://github.com/dmytrokoren/kodi.git
 ```
 -----------------------------------------------------------------------------
 **2. Install Kodi build depends & binary addons**
