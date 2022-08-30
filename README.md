@@ -1,40 +1,88 @@
-[![Build Status](https://travis-ci.org/xbmc/xbmc.svg?branch=master)](https://travis-ci.org/xbmc/xbmc)
-[![Documentation](https://codedocs.xyz/xbmc/xbmc.svg)](https://codedocs.xyz/xbmc/xbmc/)
-
-![Kodi logo](https://raw.githubusercontent.com/xbmc/xbmc-forum/master/xbmc/images/logo-sbs-black.png)
-# Kodi Home Theater Software
-
-**Welcome to Kodi!**
-
-Kodi is an award-winning free and open source (GPL) software media player and
-entertainment hub for digital media. Kodi is available for multiple platforms.
-Created in 2003 by a group of like minded programmers, Kodi is a non-profit
-project run and developed by volunteers located around the world.
-More than 450 software developers have contributed to Kodi to date, and 100-plus
-translators have worked to expand its reach, making it available in more
-than 65 languages.
-
-While Kodi functions very well as a standard media player application for your
-computer, it has been designed to be the perfect companion for your HTPC.
-Supporting an almost endless range of remote controls, and combined with its
-beautiful interface and powerful skinning engine, Kodi feels very natural to
-use from the couch and is the ideal solution for your home theater.
-
-Currently Kodi can be used to play almost all popular audio and video formats
-around. It was designed for network playback, so you can stream your multimedia
-from anywhere in the house or directly from the internet using practically any
-protocol available.
-
-Use your media as-is: Kodi can play CDs and DVDs directly
-from the disk or image file, almost all popular archive formats from your hard
-drive, and even files inside ZIP and RAR archives. It will even scan all of
-your media and automatically create a personalized library complete with box
-covers, descriptions, and fanart. There are playlist and slideshow functions, a
-weather forecast feature and many audio visualizations. Once installed, your
-computer will become a fully functional multimedia jukebox.
-
-
 ## Installation
+
+-----------------------------------------------------------------------------
+### Requirements: ###
+
+- MacOS High Sierra
+- Xcode: 9.2
+- Java 8u202
+
+-----------------------------------------------------------------------------
+**1. Getting the source code**
+-----------------------------------------------------------------------------
+```
+git clone https://github.com/Memphiz/xbmc.git --depth=1 --branch yab --single-branch
+```
+-----------------------------------------------------------------------------
+**2. Install Kodi build depends & binary addons**
+-----------------------------------------------------------------------------
+```
+cd $HOME/kodi/tools/depends
+```
+```
+./bootstrap
+```
+```
+./configure --host=arm-apple-darwin --with-cpu=arm64 --with-platform=tvos
+```
+```
+make -j$(getconf _NPROCESSORS_ONLN)
+```
+```
+make -C target/binary-addons
+```
+-----------------------------------------------------------------------------
+**3. How to compile**
+-----------------------------------------------------------------------------
+```
+cd $HOME/kodi
+```
+```
+make -C tools/depends/target/xbmc
+```
+```
+make clean
+```
+```
+make xcode_depends
+```
+-----------------------------------------------------------------------------
+**4. Using Xcode**
+-----------------------------------------------------------------------------
+
+Go to Kodi folder located in home folder ($HOME/Kodi).<br>
+Open Kodi.xcodeproj
+<br>
+Set target compilation as Kodi-TVOS > GenericTVOS<br>
+
+Do changes for Target <b>Kodi-TVOS & TVOSTopShelf:</b><br>
+Change Bundle Identifier to a unique name.<br>
+Select your Team and Provisional Profile.
+
+After all required fields are satisfied.<br>
+Xcode Main Menu > Products > Clean > and then Build.
+
+-----------------------------------------------------------------------------
+**5. Using Terminal (command-line)**
+-----------------------------------------------------------------------------
+```
+cd $HOME/Kodi
+```
+```
+xcodebuild -project Kodi.xcodeproj -target Kodi-TVOS -configuration Release build \ ONLY_ACTIVE_ARCH=YES ARCHS=arm64 VALID_ARCHS=arm64
+```
+-----------------------------------------------------------------------------
+**6. Build Path & Code Sign**
+-----------------------------------------------------------------------------
+This is the path when using Terminal Build
+    /Users/*you*/Kodi/build/Release-appletvos
+    
+This is the path when using Xcode Build (to get Library folder- Hold Alt and navigate to finder GO)<br>
+    /Users/***your name***/Library/Developer/Xcode/DerivedData/Kodi-xxxxxxxxxxxxx/Build/Products/Debug-appletvos/Kodi.app
+
+NOTE: Code Sign it with [https://dantheman827.github.io/ios-app-signer/](https://dantheman827.github.io/ios-app-signer/)
+
+-----------------------------------------------------------------------------
 
 See [docs/README.xxx] (https://github.com/xbmc/xbmc/tree/master/docs) for specific platform build information.
 
