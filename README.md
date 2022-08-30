@@ -49,6 +49,7 @@ make -j$(getconf _NPROCESSORS_ONLN) xcode_depends
 -----------------------------------------------------------------------------
 **4. Using Xcode**
 -----------------------------------------------------------------------------
+=== RECOMMENDED TO USE TERMINAL COMMAND TO BUILD KODI ===
 
 Go to Kodi folder located in home folder ($HOME/Kodi).<br>
 Open Kodi.xcodeproj
@@ -69,7 +70,7 @@ Xcode Main Menu > Products > Clean > and then Build.
 cd $HOME/Kodi
 ```
 ```
-xcodebuild -project Kodi.xcodeproj -target Kodi-TVOS -configuration Release build \ ONLY_ACTIVE_ARCH=YES ARCHS=arm64 VALID_ARCHS=arm64
+xcodebuild -project Kodi.xcodeproj -target Kodi-TVOS -configuration Release build \ ONLY_ACTIVE_ARCH=YES ARCHS=arm64 VALID_ARCHS=arm64 CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 ```
 -----------------------------------------------------------------------------
 **6. Build Path & Code Sign**
