@@ -33,7 +33,7 @@ LINK_ICONV=@link_iconv@
 ENABLE_GPLV3=@use_gplv3@
 HAS_LIBCRYSTAX=@has_libcrystax@
 
-BASE_URL=http://mirrors.kodi.tv/build-deps/sources
+BASE_URL=http://mirrors.mit.edu/kodi/build-deps/sources
 ifneq ($(KODI_MIRROR),)
 BASE_URL=$(KODI_MIRROR)/build-deps/sources
 endif
