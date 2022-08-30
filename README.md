@@ -11,7 +11,7 @@
 **1. Getting the source code**
 -----------------------------------------------------------------------------
 ```
-git clone https://github.com/dmytrokoren/kodi.git
+git clone https://github.com/dmytrokoren/kodi.git --depth=1 --single-branch
 ```
 -----------------------------------------------------------------------------
 **2. Install Kodi build depends & binary addons**
