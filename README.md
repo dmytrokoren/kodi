@@ -29,7 +29,7 @@ cd $HOME/kodi/tools/depends
 make -j$(getconf _NPROCESSORS_ONLN)
 ```
 ```
-make -C target/binary-addons
+make -j$(getconf _NPROCESSORS_ONLN) -C target/binary-addons
 ```
 -----------------------------------------------------------------------------
 **3. How to compile**
@@ -38,13 +38,13 @@ make -C target/binary-addons
 cd $HOME/kodi
 ```
 ```
-make -C tools/depends/target/xbmc
+make -j$(getconf _NPROCESSORS_ONLN) -C tools/depends/target/xbmc
 ```
 ```
-make clean
+make -j$(getconf _NPROCESSORS_ONLN) clean
 ```
 ```
-make xcode_depends
+make -j$(getconf _NPROCESSORS_ONLN) xcode_depends
 ```
 -----------------------------------------------------------------------------
 **4. Using Xcode**
