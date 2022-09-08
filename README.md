@@ -70,7 +70,7 @@ Xcode Main Menu > Products > Clean > and then Build.
 cd $HOME/Kodi
 ```
 ```
-xcodebuild -project Kodi.xcodeproj -target Kodi-TVOS -configuration Release build \ ONLY_ACTIVE_ARCH=YES ARCHS=arm64 VALID_ARCHS=arm64 CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+xcodebuild -project $HOME/kodi/Kodi.xcodeproj -target Kodi-TVOS -configuration Release build \ ONLY_ACTIVE_ARCH=YES ARCHS=arm64 VALID_ARCHS=arm64 CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 ```
 -----------------------------------------------------------------------------
 **6. Build Path & Code Sign**
