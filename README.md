@@ -51,7 +51,7 @@ make -j$(getconf _NPROCESSORS_ONLN) xcode_depends
 -----------------------------------------------------------------------------
 === RECOMMENDED TO USE TERMINAL COMMAND TO BUILD KODI ===
 
-Go to Kodi folder located in home folder ($HOME/Kodi).<br>
+Go to Kodi folder located in home folder ($HOME/kodi).<br>
 Open Kodi.xcodeproj
 <br>
 Set target compilation as Kodi-TVOS > GenericTVOS<br>
@@ -67,19 +67,16 @@ Xcode Main Menu > Products > Clean > and then Build.
 **5. Using Terminal (command-line)**
 -----------------------------------------------------------------------------
 ```
-cd $HOME/Kodi
-```
-```
 xcodebuild -project $HOME/kodi/Kodi.xcodeproj -target Kodi-TVOS -configuration Release build \ ONLY_ACTIVE_ARCH=YES ARCHS=arm64 VALID_ARCHS=arm64 CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 ```
 -----------------------------------------------------------------------------
 **6. Build Path & Code Sign**
 -----------------------------------------------------------------------------
 This is the path when using Terminal Build
-    /Users/*you*/Kodi/build/Release-appletvos
+    $HOME/kodi/build/Release-appletvos
     
 This is the path when using Xcode Build (to get Library folder- Hold Alt and navigate to finder GO)<br>
-    /Users/***your name***/Library/Developer/Xcode/DerivedData/Kodi-xxxxxxxxxxxxx/Build/Products/Debug-appletvos/Kodi.app
+    $HOME/Library/Developer/Xcode/DerivedData/Kodi-xxxxxxxxxxxxx/Build/Products/Debug-appletvos/Kodi.app
 
 NOTE: Code Sign it with [https://dantheman827.github.io/ios-app-signer/](https://dantheman827.github.io/ios-app-signer/)
 
