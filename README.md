@@ -64,7 +64,7 @@ xcodebuild -project $HOME/kodi/Kodi.xcodeproj -target Kodi-TVOS -configuration R
 Go to Kodi folder located in home folder ($HOME/kodi).<br>
 Open Kodi.xcodeproj
 <br>
-Set target compilation as Kodi-TVOS > GenericTVOS<br>
+Set target compilation as Kodi-TVOS > Generic tvOS Device<br>
 
 Do changes for Target <b>Kodi-TVOS & TVOSTopShelf:</b><br>
 Change Bundle Identifier to a unique name.<br>
