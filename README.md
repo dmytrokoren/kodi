@@ -47,7 +47,17 @@ make -j$(getconf _NPROCESSORS_ONLN) clean
 make -j$(getconf _NPROCESSORS_ONLN) xcode_depends
 ```
 -----------------------------------------------------------------------------
-**4. Using Xcode**
+**4. Using Terminal (command-line)**
+-----------------------------------------------------------------------------
+Open Kodi project in Xcode and make adjustments required before building
+```
+open $HOME/kodi/Kodi.xcodeproj
+```
+```
+xcodebuild -project $HOME/kodi/Kodi.xcodeproj -target Kodi-TVOS -configuration Release build \ ONLY_ACTIVE_ARCH=YES ARCHS=arm64 VALID_ARCHS=arm64 CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+```
+-----------------------------------------------------------------------------
+**5. Using Xcode**
 -----------------------------------------------------------------------------
 === RECOMMENDED TO USE TERMINAL COMMAND TO BUILD KODI ===
 
@@ -63,12 +73,6 @@ Select your Team and Provisional Profile.
 After all required fields are satisfied.<br>
 Xcode Main Menu > Products > Clean > and then Build.
 
------------------------------------------------------------------------------
-**5. Using Terminal (command-line)**
------------------------------------------------------------------------------
-```
-xcodebuild -project $HOME/kodi/Kodi.xcodeproj -target Kodi-TVOS -configuration Release build \ ONLY_ACTIVE_ARCH=YES ARCHS=arm64 VALID_ARCHS=arm64 CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-```
 -----------------------------------------------------------------------------
 **6. Build Path & Code Sign**
 -----------------------------------------------------------------------------
